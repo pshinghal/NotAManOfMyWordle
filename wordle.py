@@ -4,9 +4,15 @@ from collections import defaultdict
 
 
 def build_lexicon():
-    with open('/usr/share/dict/words', 'r') as f:
+    with open('all_words.txt', 'r') as f:
         words = [line.strip() for line in f.readlines()]
-    return [word for word in words if len(word) == 5 and word[0].islower()]
+    return words
+
+
+def build_target_lexicon():
+    with open('target_words.txt', 'r') as f:
+        words = [line.strip() for line in f.readlines()]
+    return words
 
 
 def build_freq(words):
@@ -70,7 +76,7 @@ def run_loop():
     disallowed_positions = set()
     known_positions = set()
     lexicon = build_lexicon()
-    valid = lexicon
+    valid = build_target_lexicon()
     while len(valid) > 1:
         freq = build_freq(valid)
         if len(valid) < 10:
