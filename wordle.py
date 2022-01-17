@@ -15,10 +15,10 @@ def build_target_lexicon():
     return words
 
 
-def build_freq(words):
+def build_freq(words, unique=True):
     freq = defaultdict(int)
     for word in words:
-        for letter in word:
+        for letter in set(word) if unique else word:
             freq[letter] += 1
     return freq
 
