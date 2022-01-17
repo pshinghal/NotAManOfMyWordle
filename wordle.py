@@ -99,8 +99,8 @@ def run_loop():
     valid = build_target_lexicon()
     while len(valid) > 1:
         freq = build_freq(valid)
-        if len(valid) < 10:
-            print(f"Fewer than 10 valid choices remain: {valid}")
+        if len(valid) <= 15:
+            print(f"Only {len(valid)} valid choices remain: {', '.join(valid)}")
         print(
             f"Suggestions for next word: {guess(lexicon, freq, present_letters, absent_letters)}"
         )
