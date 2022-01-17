@@ -129,6 +129,14 @@ def run_loop():
             disallowed_positions,
             known_positions,
         )
+        # TODO infer new constraints from valid words to feed into guess
+        # eg. atone/BBBBB,pirls/BBBBB gives us valid words: ['buddy', 'buggy', 'chuck',
+        # 'duchy', 'dummy', 'fuzzy', 'gummy', 'mucky', 'muddy', 'mummy']. These all have
+        # "u" in them, so we needn't attach any exploratory value (for the guess) to "u"
+        # Although, note: this will likely only be useful when only a few valid words
+        # remain. And at that point, we could always move to a strategy of scoring based
+        # on the actual max-scan-depth (rank the words by how evenly they divide the
+        # remaining search space)
     print(f"The word is {valid[0]}")
 
 
